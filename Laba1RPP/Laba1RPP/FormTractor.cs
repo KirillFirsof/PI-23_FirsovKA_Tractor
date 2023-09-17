@@ -83,7 +83,7 @@ namespace Laba1RPP
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void PictureBoxCar_Resize(object sender, EventArgs e)
+        private void PictureBoxTractor_Resize(object sender, EventArgs e)
         {
             _car?.ChangeBorders(pictureBoxTractor.Width, pictureBoxTractor.Height);
             Draw();
@@ -146,7 +146,7 @@ namespace Laba1RPP
             this.pictureBoxTractor.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
             this.pictureBoxTractor.TabIndex = 1;
             this.pictureBoxTractor.TabStop = false;
-            this.pictureBoxTractor.Click += new System.EventHandler(this.pictureBoxTractor_Click);
+            this.pictureBoxTractor.Click += new System.EventHandler(this.PictureBoxTractor_Resize);
             // 
             // buttonRight
             // 
@@ -198,6 +198,7 @@ namespace Laba1RPP
             // 
             // buttonCreate
             // 
+            this.buttonCreate.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.buttonCreate.Location = new System.Drawing.Point(8, 386);
             this.buttonCreate.Name = "buttonCreate";
             this.buttonCreate.Size = new System.Drawing.Size(94, 29);
@@ -223,10 +224,6 @@ namespace Laba1RPP
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxTractor)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
-
-        }
-        private void pictureBoxTractor_Click(object sender, EventArgs e)
-        {
 
         }
 
