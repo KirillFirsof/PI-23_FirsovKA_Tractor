@@ -18,7 +18,7 @@ namespace Laba1RPP
         private Button buttonDown;
         private Button buttonLeft;
         private Button buttonCreate;
-        private DrawningTractor _car;
+        private DrawningTractor _tractor;
 
         public FormTractor()
         {
@@ -31,7 +31,7 @@ namespace Laba1RPP
         {
             Bitmap bmp = new(pictureBoxTractor.Width, pictureBoxTractor.Height);
             Graphics gr = Graphics.FromImage(bmp);
-            _car?.DrawTransport(gr);
+            _tractor?.DrawTransport(gr);
             pictureBoxTractor.Image = bmp;
         }
         /// <summary>
@@ -42,14 +42,14 @@ namespace Laba1RPP
         private void ButtonCreate_Click(object sender, EventArgs e)
         {
             Random rnd = new();
-            _car = new DrawningTractor();
-            _car.Init(rnd.Next(100, 300), rnd.Next(1000, 2000),
+            _tractor = new DrawningTractor();
+            _tractor.Init(rnd.Next(100, 300), rnd.Next(1000, 2000),
            Color.FromArgb(rnd.Next(0, 256), rnd.Next(0, 256), rnd.Next(0, 256)));
-            _car.SetPosition(rnd.Next(10, 100), rnd.Next(10, 100),
+            _tractor.SetPosition(rnd.Next(10, 100), rnd.Next(10, 100),
            pictureBoxTractor.Width, pictureBoxTractor.Height);
-            toolStripStatusLabelSpeed.Text = $"Скорость: {_car.Tractor.Speed}";
-            toolStripStatusLabelWeight.Text = $"Вес: {_car.Tractor.Weight}";
-            toolStripStatusLabelColor.Text = $"Цвет: { _car.Tractor.BodyColor.Name}";
+            toolStripStatusLabelSpeed.Text = $"Скорость: {_tractor.Tractor.Speed}";
+            toolStripStatusLabelWeight.Text = $"Вес: {_tractor.Tractor.Weight}";
+            toolStripStatusLabelColor.Text = $"Цвет: { _tractor.Tractor.BodyColor.Name}";
         Draw();
         }
         /// <summary>
@@ -64,16 +64,16 @@ namespace Laba1RPP
             switch (name)
             {
                 case "buttonUp":
-                    _car?.MoveTransport(Direction.Up);
+                    _tractor?.MoveTransport(Direction.Up);
                     break;
                 case "buttonDown":
-                    _car?.MoveTransport(Direction.Down);
+                    _tractor?.MoveTransport(Direction.Down);
                     break;
                 case "buttonLeft":
-                    _car?.MoveTransport(Direction.Left);
+                    _tractor?.MoveTransport(Direction.Left);
                     break;
                 case "buttonRight":
-                    _car?.MoveTransport(Direction.Right);
+                    _tractor?.MoveTransport(Direction.Right);
                     break;
             }
             Draw();
@@ -85,7 +85,7 @@ namespace Laba1RPP
         /// <param name="e"></param>
         private void PictureBoxTractor_Resize(object sender, EventArgs e)
         {
-            _car?.ChangeBorders(pictureBoxTractor.Width, pictureBoxTractor.Height);
+            _tractor?.ChangeBorders(pictureBoxTractor.Width, pictureBoxTractor.Height);
             Draw();
         }
 
