@@ -31,7 +31,7 @@ namespace Laba1RPP
         /// <summary>
         /// Высота отрисовки автомобиля
         /// </summary>
-        private readonly int _carHeight = 50;
+        private readonly int _carHeight = 65;
         /// <summary>
         /// Инициализация свойств
         /// </summary>
@@ -79,11 +79,17 @@ namespace Laba1RPP
                     break;
                 //влево
                 case Direction.Left:
-                    // TODO: Продумать логику
+                    if (_startPosX - Tractor.Step > 0)
+                    {
+                        _startPosX -= Tractor.Step;
+                    }
                     break;
                 //вверх
                 case Direction.Up:
-                    // TODO: Продумать логику
+                    if(_startPosY - Tractor.Step > 0)
+                    {
+                        _startPosY -= Tractor.Step;
+                    }
                     break;
                 //вниз
                 case Direction.Down:
@@ -106,37 +112,44 @@ namespace Laba1RPP
                 return;
             }
             Pen pen = new(Color.Black);
-            //границы автомобиля
-            g.DrawEllipse(pen, _startPosX, _startPosY, 20, 20);
-            g.DrawEllipse(pen, _startPosX, _startPosY + 30, 20, 20);
-            g.DrawEllipse(pen, _startPosX + 70, _startPosY, 20, 20);
-            g.DrawEllipse(pen, _startPosX + 70, _startPosY + 30, 20, 20);
-            g.DrawRectangle(pen, _startPosX - 1, _startPosY + 10, 10, 30);
-            g.DrawRectangle(pen, _startPosX + 80, _startPosY + 10, 10, 30);
-            g.DrawRectangle(pen, _startPosX + 10, _startPosY - 1, 70, 52);
-            //задние фары
-            Brush brRed = new SolidBrush(Color.Red);
-            g.FillEllipse(brRed, _startPosX, _startPosY, 20, 20);
-            g.FillEllipse(brRed, _startPosX, _startPosY + 30, 20, 20);
-            //передние фары
-            Brush brYellow = new SolidBrush(Color.Yellow);
-            g.FillEllipse(brYellow, _startPosX + 70, _startPosY, 20, 20);
-            g.FillEllipse(brYellow, _startPosX + 70, _startPosY + 30, 20, 20);
+            
+            //Гусеницы
+            Brush brGray = new SolidBrush(Color.Gray);
+            g.FillEllipse(brGray, _startPosX, _startPosY + 41, 25, 25);
+            g.FillEllipse(brGray, _startPosX + 55, _startPosY + 41, 25, 25);
+            g.FillRectangle(brGray, _startPosX + 13, _startPosY + 41, 54, 25);
+            //колеса
+            Brush brBlack = new SolidBrush(Color.Black);
+            g.FillEllipse(brBlack, _startPosX, _startPosY + 45, 15, 15);
+            g.FillEllipse(brBlack, _startPosX + 65, _startPosY + 45, 15, 15);
+            g.FillEllipse(brBlack, _startPosX + 35, _startPosY + 55, 10, 10);
+            g.FillEllipse(brBlack, _startPosX + 20, _startPosY + 55, 10, 10);
+            g.FillEllipse(brBlack, _startPosX + 50, _startPosY + 55, 10, 10);
+            g.FillEllipse(brBlack, _startPosX + 25, _startPosY + 40, 10, 10);
+            g.FillEllipse(brBlack, _startPosX + 45, _startPosY + 40, 10, 10);
             //кузов
             Brush br = new SolidBrush(Tractor?.BodyColor ?? Color.Black);
-            g.FillRectangle(br, _startPosX, _startPosY + 10, 10, 30);
-            g.FillRectangle(br, _startPosX + 80, _startPosY + 10, 10, 30);
-            g.FillRectangle(br, _startPosX + 10, _startPosY, 70, 50);
-            //стекла
-            Brush brBlue = new SolidBrush(Color.LightBlue);
-            g.FillRectangle(brBlue, _startPosX + 60, _startPosY + 5, 5, 40);
-            g.FillRectangle(brBlue, _startPosX + 20, _startPosY + 5, 5, 40);
-            g.FillRectangle(brBlue, _startPosX + 25, _startPosY + 3, 35, 2);
-            g.FillRectangle(brBlue, _startPosX + 25, _startPosY + 46, 35, 2);
-            //выделяем рамкой крышу
-            g.DrawRectangle(pen, _startPosX + 25, _startPosY + 5, 35, 40);
-            g.DrawRectangle(pen, _startPosX + 65, _startPosY + 10, 25, 30);
-            g.DrawRectangle(pen, _startPosX, _startPosY + 10, 15, 30);
+            g.FillRectangle(br, _startPosX, _startPosY + 20, 80, 20);
+            g.FillRectangle(br, _startPosX + 60, _startPosY, 10, 20);
+            g.FillRectangle(br, _startPosX, _startPosY, 40, 20);
+
+            //Окно
+            Brush brBlue = new SolidBrush(Color.Blue);
+            g.FillRectangle(brBlue, _startPosX + 10, _startPosY + 3, 25, 15);
+
+            //Колеса
+            g.FillEllipse(br, _startPosX + 2, _startPosY + 47, 11, 11);
+            g.FillEllipse(br, _startPosX + 67, _startPosY + 47, 11, 11);
+            g.FillEllipse(br, _startPosX + 37, _startPosY + 57, 6, 6);
+            g.FillEllipse(br, _startPosX + 22, _startPosY + 57, 6, 6);
+            g.FillEllipse(br, _startPosX + 52, _startPosY + 57, 6, 6);
+            g.FillEllipse(br, _startPosX + 27, _startPosY + 42, 6, 6);
+            g.FillEllipse(br, _startPosX + 47, _startPosY + 42, 6, 6);
+
+            //границы трактора
+            g.DrawRectangle(pen, _startPosX, _startPosY + 20, 80, 20);
+            g.DrawRectangle(pen, _startPosX + 60, _startPosY, 10, 20);
+            g.DrawRectangle(pen, _startPosX, _startPosY, 40, 20);
         }
         /// <summary>
         /// Смена границ формы отрисовки

@@ -219,6 +219,7 @@ namespace Laba1RPP
             this.Controls.Add(this.statusStrip1);
             this.Name = "FormTractor";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Load += new System.EventHandler(this.FormTractor_Load);
             this.statusStrip1.ResumeLayout(false);
             this.statusStrip1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxTractor)).EndInit();
@@ -227,5 +228,9 @@ namespace Laba1RPP
 
         }
 
+        private void FormTractor_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }
